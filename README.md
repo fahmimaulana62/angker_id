@@ -73,4 +73,6 @@ Saat pertama kali dibuka, HP harus terhubung internet (untuk data DummyJSON dan 
 
 
 ## Catatan Penggunaan AI
-[Tulis jujur bagian mana yang dibantu AI, dan bagian mana yang kamu kerjakan atau pelajari sendiri]
+Kode aplikasi ini (tampilan maupun logika) disusun dengan bantuan AI (Claude).
+Saya menjalankan dan menguji aplikasi di HP, mempelajari struktur kodenya,
+dan menjelaskannya di video demo.
