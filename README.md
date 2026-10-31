@@ -3,12 +3,12 @@
 Aplikasi katalog produk berbasis **Flutter** yang memakai API bawaan **DummyJSON Products**, dengan tema warna pastel. Dibuat untuk Tugas Praktikum 2, Pemrograman Perangkat Bergerak.
 
 ## 🎥 Video Demo (YouTube)
-[Tonton demo di YouTube](https://youtu.be/ISI_LINK_VIDEO_DI_SINI)
+[Tonton demo di YouTube](https://youtu.be/VEMXLBi4LbI?si=2r2sizLbsX-k14s9)
 
 ## Identitas
-- Nama: ...
-- NIM: ...
-- Kelas: IF05105-602
+- Nama: Fahmi Maulana Sitakar
+- NIM:230102042
+- Kelas: IF24A
 - Mata kuliah: Pemrograman Perangkat Bergerak
 
 ## Fitur
@@ -54,9 +54,6 @@ lib/
 └── widgets/                     # kartu produk, stepper, shimmer, state view, dll
 ```
 
-## Screenshot
-(tambahkan screenshot dari HP)
-
 ## Cara Menjalankan
 Butuh Flutter 3.27 atau lebih baru.
 
@@ -73,3 +70,7 @@ flutter run
 ```
 
 Saat pertama kali dibuka, HP harus terhubung internet (untuk data DummyJSON dan font).
+
+
+## Catatan Penggunaan AI
+[Tulis jujur bagian mana yang dibantu AI, dan bagian mana yang kamu kerjakan atau pelajari sendiri]

@@ -21,9 +21,24 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
-  static const List<String> _letters = ['A', 'n', 'g', 'k', 'e', 'r', '.', 'i', 'd'];
-  static const List<Color> _cycle = [AppColors.pinkDeep, AppColors.blueDeep, AppColors.mintDeep];
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
+  static const List<String> _letters = [
+    'A',
+    'n',
+    'g',
+    'k',
+    'e',
+    'r',
+    '.',
+    'i',
+    'd'
+  ];
+  static const List<Color> _cycle = [
+    AppColors.pinkDeep,
+    AppColors.blueDeep,
+    AppColors.mintDeep
+  ];
 
   late final AnimationController _c = AnimationController(
     vsync: this,
@@ -51,13 +66,20 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     for (var i = 0; i < _letters.length; i++) {
       final start = i * 0.055;
       final end = (start + 0.36).clamp(0.0, 1.0);
-      _fall.add(_c.drive(CurveTween(curve: Interval(start, end, curve: Curves.bounceOut))));
-      _spin.add(_c.drive(CurveTween(curve: Interval(start, end, curve: Curves.easeOutBack))));
-      _fade.add(_c.drive(CurveTween(curve: Interval(start, start + (end - start) * 0.3, curve: Curves.easeOut))));
+      _fall.add(_c.drive(
+          CurveTween(curve: Interval(start, end, curve: Curves.bounceOut))));
+      _spin.add(_c.drive(
+          CurveTween(curve: Interval(start, end, curve: Curves.easeOutBack))));
+      _fade.add(_c.drive(CurveTween(
+          curve: Interval(start, start + (end - start) * 0.3,
+              curve: Curves.easeOut))));
     }
-    _shadow = _c.drive(CurveTween(curve: const Interval(0.62, 0.92, curve: Curves.easeOutCubic)));
-    _tagline = _c.drive(CurveTween(curve: const Interval(0.78, 1.0, curve: Curves.easeOutCubic)));
-    _ghost = _c.drive(CurveTween(curve: const Interval(0.82, 1.0, curve: Curves.elasticOut)));
+    _shadow = _c.drive(CurveTween(
+        curve: const Interval(0.62, 0.92, curve: Curves.easeOutCubic)));
+    _tagline = _c.drive(CurveTween(
+        curve: const Interval(0.78, 1.0, curve: Curves.easeOutCubic)));
+    _ghost = _c.drive(
+        CurveTween(curve: const Interval(0.82, 1.0, curve: Curves.elasticOut)));
 
     _c.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
@@ -113,7 +135,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
-    final letterStyle = AppText.heading(52, weight: FontWeight.w800, height: 1.1);
+    final letterStyle =
+        AppText.heading(52, weight: FontWeight.w800, height: 1.1);
 
     return Scaffold(
       body: Container(
@@ -136,7 +159,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                     animation: _ghost,
                     builder: (context, child) => Opacity(
                       opacity: _ghost.value.clamp(0.0, 1.0),
-                      child: Transform.scale(scale: 0.4 + 0.6 * _ghost.value, child: child),
+                      child: Transform.scale(
+                          scale: 0.4 + 0.6 * _ghost.value, child: child),
                     ),
                     child: const Text('👻', style: TextStyle(fontSize: 40)),
                   ),
@@ -152,13 +176,16 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                           child: AnimatedBuilder(
                             animation: _c,
                             builder: (context, child) => Transform.translate(
-                              offset: Offset(0, (1 - _fall[i].value) * -height * 0.6),
+                              offset: Offset(
+                                  0, (1 - _fall[i].value) * -height * 0.6),
                               child: Transform.rotate(
                                 angle: (1 - _spin[i].value) * 0.35 * dir,
                                 child: child,
                               ),
                             ),
-                            child: Text(_letters[i], style: letterStyle.copyWith(color: _colorFor(i))),
+                            child: Text(_letters[i],
+                                style:
+                                    letterStyle.copyWith(color: _colorFor(i))),
                           ),
                         );
                       }),
@@ -170,13 +197,15 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                     animation: _shadow,
                     builder: (context, child) => Opacity(
                       opacity: _shadow.value * 0.9,
-                      child: Transform.scale(scaleX: _shadow.value, scaleY: 1, child: child),
+                      child: Transform.scale(
+                          scaleX: _shadow.value, scaleY: 1, child: child),
                     ),
                     child: Container(
                       width: 190,
                       height: 12,
                       decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(Radius.elliptical(95, 6)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.elliptical(95, 6)),
                         gradient: RadialGradient(
                           colors: [
                             AppColors.pinkDeep.withValues(alpha: 0.28),
@@ -191,18 +220,22 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                     animation: _tagline,
                     builder: (context, child) => Opacity(
                       opacity: _tagline.value,
-                      child: Transform.translate(offset: Offset(0, 12 * (1 - _tagline.value)), child: child),
+                      child: Transform.translate(
+                          offset: Offset(0, 12 * (1 - _tagline.value)),
+                          child: child),
                     ),
                     child: Column(
                       children: [
                         Text(
                           'Belanja santai, harga bikin merinding',
-                          style: AppText.body(15, weight: FontWeight.w600, color: AppColors.plum),
+                          style: AppText.body(15,
+                              weight: FontWeight.w600, color: AppColors.plum),
                         ),
                         const SizedBox(height: 6),
                         Text(
-                          'TOKO HANTU LUCU',
-                          style: AppText.label(11, color: AppColors.primary).copyWith(letterSpacing: 2),
+                          'ANGKER NOT SCARY',
+                          style: AppText.label(11, color: AppColors.primary)
+                              .copyWith(letterSpacing: 2),
                         ),
                       ],
                     ),

@@ -5,7 +5,7 @@ import '../models/sort_option.dart';
 import '../services/api_service_products.dart';
 
 /// State utama produk: daftar Beranda, detail, dan operasi CRUD.
-///
+///PRODUCT
 /// Catatan: POST/PUT/PATCH/DELETE di DummyJSON hanya simulasi (tidak tersimpan
 /// di server). Karena itu hasil operasi disimpan di state lokal supaya tampilan
 /// tetap konsisten selama aplikasi berjalan.
